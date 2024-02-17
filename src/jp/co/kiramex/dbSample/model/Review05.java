@@ -34,12 +34,13 @@ public class Review05 {
 
          // 更新するCountryCodeを入力
             System.out.print("検索キーワードを入力してください > ");
-            String input = keyIn();
+            String str1 = keyIn();
 
-         // PreparedStatementオブジェクトの?に値をセット 
-            pstmt.setString(1, input);  
 
-            rs = pstmt.executeQuery();  
+         // PreparedStatementオブジェクトの?に値をセット
+            pstmt.setInt(1,Integer.parseInt (str1));
+
+            rs = pstmt.executeQuery();
 
             while (rs.next()) {
                 // Name列の値を取得
@@ -59,7 +60,7 @@ public class Review05 {
         System.err.println("データベースに異常が発生しました。");
         e.printStackTrace();
     } finally {
-        
+
         // 8. 接続を閉じる
         if (rs != null) {
             try {
@@ -69,7 +70,7 @@ public class Review05 {
                 e.printStackTrace();
             }
         }
-        if (pstmt != null) {  
+        if (pstmt != null) {
             try {
                 pstmt.close();
             } catch (SQLException e) {
@@ -88,7 +89,6 @@ public class Review05 {
     }
 }
 
-
     /*
      * キーボードから入力された値をStringで返す 引数：なし 戻り値：入力された文字列
      */
@@ -103,4 +103,5 @@ public class Review05 {
         return line;
     }
 }
+
 
